@@ -16,17 +16,13 @@ public class App {
             if (op != 4) {
                 switch (op) {
                     case 1:
-                        JOptionPane.showMessageDialog(null, "Estatística Descritiva", "Aula3- Switch e Loops", JOptionPane.INFORMATION_MESSAGE);
-                        break;
+                        JOptionPane.showMessageDialog(null, "Estatística Descritiva", "Aula3- Switch e Loops", JOptionPane.INFORMATION_MESSAGE);break;
                     case 2:
-                        JOptionPane.showMessageDialog(null, "Probabilidade", "Aula3- Switch e Loops", JOptionPane.INFORMATION_MESSAGE);
-                        break;
+                        JOptionPane.showMessageDialog(null, "Probabilidade", "Aula3- Switch e Loops", JOptionPane.INFORMATION_MESSAGE);break;
                     case 3:
-                        JOptionPane.showMessageDialog(null, "Modelos Probabilísticos", "Aula3- Switch e Loops", JOptionPane.INFORMATION_MESSAGE);
-                        break;
+                        JOptionPane.showMessageDialog(null, "Modelos Probabilísticos", "Aula3- Switch e Loops", JOptionPane.INFORMATION_MESSAGE);break; 
                     default:
-                        JOptionPane.showMessageDialog(null, "Opção Inválida", "Aula3- Switch e Loops", JOptionPane.ERROR_MESSAGE);
-                        break;
+                        JOptionPane.showMessageDialog(null, "Opção Inválida", "Aula3- Switch e Loops", JOptionPane.ERROR_MESSAGE);break;  
                 }
 
                 // Pergunta ao usuário se deseja escolher outra opção
