@@ -35,7 +35,6 @@ public class App {
                 JOptionPane.showMessageDialog(null, estatisticas, "Finalizando Jogo", JOptionPane.INFORMATION_MESSAGE);
                 break;
             } 
-            
             int resultado = random.nextInt(2);//0 - cara 1 - coroa
             if(resultado == 0){
                 ContCara++;
