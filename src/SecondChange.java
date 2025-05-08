@@ -4,16 +4,10 @@ import javax.swing.JOptionPane;
 
 public class SecondChange {
     public static void main(String[] args) throws Exception {
-        // Cara ou Coroa - Probabilidade
-        // 50% Cara
-        // 50% Coroapush
-        // espaço amostral
-        // Variável que receba a interação do jogo
         // Random
         // For, do While e While
         String [] espacoAmostral = {"1", "2","3","4","5","6"};
-        // objeto Random..
-        //sorteio
+
         Random random = new Random();
          
         //Contadores para verificar a distribuição
@@ -34,6 +28,9 @@ public class SecondChange {
             // interação com usuário
             int opcao = JOptionPane.showConfirmDialog(null,mensagem, "Lançando dados", JOptionPane.YES_NO_OPTION);
             int resultado = random.nextInt(6) + 1;
+    
+
+
             if(opcao != JOptionPane.YES_OPTION){
                 //estatísticas
                 String estatisticas = "Jogo finalizado!\n" +
@@ -42,8 +39,10 @@ public class SecondChange {
                 JOptionPane.showMessageDialog(null, estatisticas, "Finalizando Jogo", JOptionPane.INFORMATION_MESSAGE);
                 if(Total == 0){
                     JOptionPane.showMessageDialog(null,"Nenhuma opção foi escolhida. Jogo encerrado", "ATENÇÃO",JOptionPane.INFORMATION_MESSAGE);
-                }
-                
+                    break;
+                } 
+
+        
                 if ((cont1 > cont2) && (cont1 > cont3) && (cont1 > cont4) && (cont1 > cont5) && (cont1 > cont6)) {
                     //  JOptionPane.showMessageDialog(null, "ponto para o jogador 1 ", " jogador ",JOptionPane.INFORMATION_MESSAGE);  
                     String vencedor = "O vencedor que tirou maior pontuação foi o jogador numero 1 " + "\n" +" Probabilidade de ganhar : " + ((cont1/6.0)*100+"%");
@@ -78,28 +77,56 @@ public class SecondChange {
                 else if ((cont6 > cont2) && (cont6 > cont3) && (cont6 > cont4) && (cont6 > cont1) && (cont6 > cont5)) {
                     //  JOptionPane.showMessageDialog(null, "ponto para o jogador 6", " jogador ",JOptionPane.INFORMATION_MESSAGE);
                     String vencedor = "O vencedor que tirou maior pontuação foi: o jogador numero 6 " + "\n" + " Probabilidade de ganhar foi: " + ((cont6/6.0)*100+"%");
-                    JOptionPane.showMessageDialog(null, vencedor, "Resultado",JOptionPane.INFORMATION_MESSAGE);  
-                   
-
-         
-                }            
-                    break;
-                
-            } 
+                    JOptionPane.showMessageDialog(null, vencedor, "Resultado",JOptionPane.INFORMATION_MESSAGE); 
+                    
+                }  
+                    
+                    int max = Math.max(cont1, Math.max(cont2, Math.max(cont3, Math.max(cont4, Math.max(cont5, cont6)))));
+                    int countMax = 0;
+                    
+                    if (cont1 == max) {
+                        countMax++;
+                    }
+                    if (cont2 == max) {
+                        countMax++;
+                    }
+                    if (cont3 == max) {
+                        countMax++;
+                    }
+                    if (cont4 == max) {
+                        countMax++;
+                    }
+                    if (cont5 == max) {
+                        countMax++;
+                    }
+                    if (cont6 == max) {
+                        countMax++;
+                    }
+                    if (countMax > 1) {
+                        int resposta = JOptionPane.showConfirmDialog(null, "Houve um empate entre " + countMax + " jogadores!\nDeseja continuar jogando?","Empate",JOptionPane.YES_NO_OPTION);
+                        if(resposta == JOptionPane.YES_OPTION){
+                            continue;
+                        }else{
+                            break;
+                        }
+                    }
+                break;
+            }   
+              
                 
             
                     switch (resultado) {
-                        case 0:
-                            cont1++; break;
                         case 1:
                             cont1++; break;
                         case 2:
-                            cont3++; break;
+                            cont1++; break;
                         case 3:
-                            cont4++; break;
+                            cont3++; break;
                         case 4:
-                            cont5++; break;
+                            cont4++; break;
                         case 5:
+                            cont5++; break;
+                        case 6:
                             cont6++; break;
                     
                     }
@@ -113,5 +140,5 @@ public class SecondChange {
 
         }                 
 
-    }
+}
 
