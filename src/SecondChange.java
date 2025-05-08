@@ -26,35 +26,23 @@ public class SecondChange {
 
         
 
-    
 
         String mensagem =  "Deseja lançar um dado ?";
         // loop de lançamento
         while(true){
+            int Total = cont1+cont2+cont3+cont4+cont5+cont6;
             // interação com usuário
             int opcao = JOptionPane.showConfirmDialog(null,mensagem, "Lançando dados", JOptionPane.YES_NO_OPTION);
             int resultado = random.nextInt(6) + 1;
-            switch (resultado) {
-                case 0:
-                    cont1++; break;
-                case 1:
-                    cont1++; break;
-                case 2:
-                    cont3++; break;
-                case 3:
-                    cont4++; break;
-                case 4:
-                    cont5++; break;
-                case 5:
-                    cont6++; break;
-             
-            }
-            if(opcao != JOptionPane.YES_NO_OPTION){
+            if(opcao != JOptionPane.YES_OPTION){
                 //estatísticas
                 String estatisticas = "Jogo finalizado!\n" +
-                "Total de lançamentos: " + (cont1+cont2+cont3+cont4+cont5+cont6) + "\n"+
+                "Total de lançamentos: " + (Total) + "\n"+
                 " jogador 1: " + cont1 + "\n" + " jogador 2: " + cont2 + "\n" +  " jogador 3: " + cont3 + "\n" + " jogador 4: " + cont4 + "\n" +  " jogador 5: " + cont5 + "\n" +  " jogador 6: " +  cont6;
-
+                JOptionPane.showMessageDialog(null, estatisticas, "Finalizando Jogo", JOptionPane.INFORMATION_MESSAGE);
+                if(Total == 0){
+                    JOptionPane.showMessageDialog(null,"Nenhuma opção foi escolhida. Jogo encerrado", "ATENÇÃO",JOptionPane.INFORMATION_MESSAGE);
+                }
                 
                 if ((cont1 > cont2) && (cont1 > cont3) && (cont1 > cont4) && (cont1 > cont5) && (cont1 > cont6)) {
                     //  JOptionPane.showMessageDialog(null, "ponto para o jogador 1 ", " jogador ",JOptionPane.INFORMATION_MESSAGE);  
@@ -87,19 +75,38 @@ public class SecondChange {
                     JOptionPane.showMessageDialog(null, vencedor, "Resultado",JOptionPane.INFORMATION_MESSAGE);   
                     
                 }
-                else if ((cont6 > cont2) || (cont6 > cont3) || (cont6 > cont4) || (cont6 > cont1) || (cont6 > cont5)) {
+                else if ((cont6 > cont2) && (cont6 > cont3) && (cont6 > cont4) && (cont6 > cont1) && (cont6 > cont5)) {
                     //  JOptionPane.showMessageDialog(null, "ponto para o jogador 6", " jogador ",JOptionPane.INFORMATION_MESSAGE);
                     String vencedor = "O vencedor que tirou maior pontuação foi: o jogador numero 6 " + "\n" + " Probabilidade de ganhar foi: " + ((cont6/6.0)*100+"%");
-                    JOptionPane.showMessageDialog(null, vencedor, "Resultado",JOptionPane.INFORMATION_MESSAGE);   
+                    JOptionPane.showMessageDialog(null, vencedor, "Resultado",JOptionPane.INFORMATION_MESSAGE);  
+                   
+
+         
                 }            
+                    break;
                 
-                JOptionPane.showMessageDialog(null, estatisticas, "Finalizando Jogo", JOptionPane.INFORMATION_MESSAGE);
-                break;
             } 
+                
             
-            String saida = "Resultado do Lançamento: "+ espacoAmostral[resultado];
-            JOptionPane.showMessageDialog(null, saida, "Resultado",JOptionPane.INFORMATION_MESSAGE);
-             
+                    switch (resultado) {
+                        case 0:
+                            cont1++; break;
+                        case 1:
+                            cont1++; break;
+                        case 2:
+                            cont3++; break;
+                        case 3:
+                            cont4++; break;
+                        case 4:
+                            cont5++; break;
+                        case 5:
+                            cont6++; break;
+                    
+                    }
+
+        
+                    String saida = "Resultado do Lançamento: "+ espacoAmostral[resultado - 1];
+                    JOptionPane.showMessageDialog(null, saida, "Resultado",JOptionPane.INFORMATION_MESSAGE);
            
         
             }
