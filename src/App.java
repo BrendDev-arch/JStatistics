@@ -18,7 +18,7 @@ public class App {
 
 
         try(FileWriter escreverArquivo = new FileWriter("cadastro.txt", true)){
-            escreverArquivo.write("Nome do cliente: " + nomeDosClientes  + ", "+"Endereço: " + nomeDoEndereço + ", " + "A área do Jardim: " + areaDoJardim + " " +"metros quadrados" +"\n");
+            escreverArquivo.write("Nome do cliente: " + nomeDosClientes  + ", "+"Endereço: " + nomeDoEndereço + ", " + "A área do Jardim: " + areaDoJardim + " " + "m²" +"\n");
             System.out.println("dados gravados com sucesso");
 
     
