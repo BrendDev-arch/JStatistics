@@ -17,10 +17,8 @@ public class AppJ {
         double areaDoJardim = larguraDoJardim*comprimentoDoJardim;
 
 
-
-
         try(FileWriter escreverArquivo = new FileWriter("cadastro.txt", true)){
-            escreverArquivo.write("Nome do cliente: " + nomeDosClientes  + ", "+"Endereço: " + nomeDoEndereço + ", " + "A área do Jardim: " + areaDoJardim + " " + " m²" +"\n");
+            escreverArquivo.write(" Nome do cliente: " + nomeDosClientes  + ", " + "Endereço: " + nomeDoEndereço + ", " + "A área do Jardim: " + areaDoJardim + " " + " m²" +"\n");
             System.out.println("dados gravados com sucesso");
 
 
@@ -43,9 +41,12 @@ public class AppJ {
         int valorDoPaisagismo;
         valorDoPaisagismo =  Integer.parseInt(JOptionPane.showInputDialog("Digite o valor do paisagismo"));
         boolean continuar = true;
-    
+        double contadorDeAreas = 0.0;
+        double metrosquadrado [] = {areaDoJardim};
+        
         while(continuar){  
             int serviço = Integer.parseInt(JOptionPane.showInputDialog(null, "Temos essas opções de serviços disponíveis no momento: " + "\n" + "1 - Implantação" + " " + valorDaImplantação + " R$" + "\n" + "2 - Manutenção" + " " + valorDaManutenção + " R$" + "\n" + "3 - Paisagismo" + " " + valorDoPaisagismo + " R$" + " \n "+ "4 - sair", JOptionPane.INFORMATION_MESSAGE));
+
             if(serviço != 4){
                     switch(serviço){
                         case 1:
@@ -69,6 +70,9 @@ public class AppJ {
                 continuar = false;
                      
             }
+            
+        
+    
         }            
     }
 }
