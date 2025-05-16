@@ -30,7 +30,6 @@ public class Duvida6 {
             double ValorComDesconto = acumulador - (acumulador*Desconto);
             JOptionPane.showMessageDialog(null, "Valor com desconto: " + ValorComDesconto);
         }
-
     }
 
 }
