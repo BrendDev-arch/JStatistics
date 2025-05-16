@@ -12,26 +12,22 @@ import javax.swing.JOptionPane;
 
 public class AppJ {
 
-
-
             public static void main(String[] args) throws Exception {
                 JOptionPane.showMessageDialog(null, "Alô, Jardim !", "Boas-vindas",JOptionPane.INFORMATION_MESSAGE);
                 boolean continuar = true;
                 List<Double> areas = new ArrayList<>();
-                List<Integer> servicos = new ArrayList<>();
+                Area area = new Area();
                 int contarArea = 1;
-                while(continuar){
-                    String nomeDosClientes;
-                    String nomeDoEndereço;  
-                    Area largure = new Area();
-                    Area Comprimento = new Area(); 
-                    nomeDosClientes = JOptionPane.showInputDialog(null,"Qual é o seu nome ?");
-                    nomeDoEndereço = JOptionPane.showInputDialog(null," Qual é o seu endereço ?");
+                List<Integer> servicos = new ArrayList<>();
+                Cliente cliente = new Cliente();
+                while(continuar){  
+                    String nomeDosClientes = JOptionPane.showInputDialog(null,"Qual é o seu nome ?");
+                    String nomeDoEndereco = JOptionPane.showInputDialog(null," Qual é o seu endereço ?");                    
                     double larguraDoJardim = Double.parseDouble(JOptionPane.showInputDialog(null, "Qual a largura do seu Jardim ? " ));
                     double comprimentoDoJardim = Double.parseDouble(JOptionPane.showInputDialog(null, "Qual o comprimento do seu Jardim ? " ));
-                    double areaDoJardim = largure.getLargura()*Comprimento.getComprimento();
+                    double areaDoJardim = area.calcularArea(larguraDoJardim, comprimentoDoJardim) ;
                     areas.add(areaDoJardim);
-
+        
                 ////////////////////////////////////////////////////////
                 
                 if(areaDoJardim < 300){
@@ -45,8 +41,7 @@ public class AppJ {
                 valorDaManutenção =  Integer.parseInt(JOptionPane.showInputDialog("Digite o valor da manutenção"));
                 int valorDoPaisagismo;
                 valorDoPaisagismo =  Integer.parseInt(JOptionPane.showInputDialog("Digite o valor do paisagismo"));
-                
-                
+                 
 
                     int serviço = Integer.parseInt(JOptionPane.showInputDialog(null, "Temos essas opções de serviços disponíveis no momento: " + "\n" + "1 - Implantação" + " " + valorDaImplantação + " R$" + "\n" + "2 - Manutenção" + " " + valorDaManutenção + " R$" + "\n" + "3 - Paisagismo" + " " + valorDoPaisagismo + " R$" + " \n "+ "4 - sair", JOptionPane.INFORMATION_MESSAGE));
 
@@ -75,8 +70,8 @@ public class AppJ {
 
                     if (!areas.isEmpty()) {
                         double soma = 0;
-                        for (double area : areas) {
-                            soma += area;
+                        for (double  metroquadrado  : areas) {
+                            soma += metroquadrado;
                         }
                         double media = soma / areas.size();
                         JOptionPane.showMessageDialog(null, "A média da área cadastrada é: " + media + " m²", " Jardinagem", JOptionPane.INFORMATION_MESSAGE);
@@ -94,13 +89,13 @@ public class AppJ {
 
                     double[] vetorArea = areas.stream().mapToDouble(Double::doubleValue).toArray();
 
-                    for(double area : vetorArea){
-                        JOptionPane.showMessageDialog(null, area + " foi armazenada", " Jardinagem " , JOptionPane.INFORMATION_MESSAGE);
+                    for(double metroquadrado : vetorArea){
+                        JOptionPane.showMessageDialog(null, metroquadrado + " foi armazenada", " Jardinagem " , JOptionPane.INFORMATION_MESSAGE);
                     }
                 
                     Map<Double, Integer> frequencias = new HashMap<>();
-                    for (double area : areas) {
-                        frequencias.put(area, frequencias.getOrDefault(area, 0) + 1);
+                    for (double metroquadrado : areas) {
+                        frequencias.put(metroquadrado, frequencias.getOrDefault(metroquadrado, 0) + 1);
                     }
 
                     double moda = -1;
@@ -129,6 +124,17 @@ public class AppJ {
                         continuar = false;
                             
                     }
+
+                    try(FileWriter escreverArquivo = new FileWriter("cadastro.txt", true)){
+                        escreverArquivo.write(" Nome do cliente: " + cliente.exibirNomeDosClientes(nomeDosClientes)  + ", " + "Endereço: " + cliente.exibirNomeDoEndereço(nomeDoEndereco)
+                        + ", " + "A área do Jardim: " + areaDoJardim + " " + " m²" +"\n");
+                        System.out.println("dados gravados com sucesso");
+                    
+                    
+                    }catch(IOException e){
+                    System.out.println("Erro ao gravar os dados"+e.getMessage());
+                    
+                    }
         
             
         
@@ -136,6 +142,7 @@ public class AppJ {
                    
     }
 }
+
   
 
 

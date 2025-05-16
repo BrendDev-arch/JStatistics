@@ -1,15 +1,10 @@
 public class Area {
-    private double larguraDoJardim;
-    private double comprimentoDoJardim;
-   
+    
+    public static double calcularArea(double largura, double comprimento){
+        return largura*comprimento;
+ 
+     }
 
-    public double getLargura(){
-        return larguraDoJardim;
-    }
-
-    public double getComprimento(){
-        return comprimentoDoJardim;
-    }
    
 
 }
